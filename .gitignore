@@ -89,4 +89,5 @@ ENV/
 .ropeproject
 
 # Project Materials
-data/
+data/lfw2
+data/lfwa.tar.gz
