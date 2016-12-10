@@ -13,7 +13,7 @@ local config = cmd:parse(arg)
 local tnt   = require 'torchnet'
 local dbg   = require 'debugger'
 
--- PREPROCESSING
+---------------------- PREPROCESSING ----------------------
 -- TODO: defining the data read and setting up iterators
 local base_data_path = "/Users/mohammadafshar1/Desktop/Fall 2016/Computer_Vision/Project/facial-recognition/"
 
@@ -27,7 +27,44 @@ local base_data_path = "/Users/mohammadafshar1/Desktop/Fall 2016/Computer_Vision
 -- datasets = {torch.load(base_data_path .. 'cifar-10-torch/test_batch.t7', 'ascii')}
 -- testiterator  = getCifarIterator(datasets)
 
--- NETWORK ARCHITECTURE
+-- local function getCifarIterator(datasets)
+--     local listdatasets = {}
+--     for _, dataset in pairs(datasets) do
+--         local list = torch.range(1, dataset.data:size(1)):totable()
+--         table.insert(listdatasets,
+--                     tnt.ListDataset{
+--                         list = list,
+--                         load = function(idx)
+--                             return {
+--                                 input  = dataset.data[{{}, idx}],
+--                                 target = dataset.labels[{{}, idx}]
+--                             } -- sample contains input and target
+--                         end
+--                     })
+--     end
+--     return tnt.DatasetIterator{
+--         dataset = tnt.BatchDataset{
+--             batchsize = config.batchsize,
+--             dataset = tnt.ShuffleDataset{
+--                dataset = tnt.TransformDataset{
+--                     transform = function(x)
+-- 		       return {
+-- 			  input  = x.input:double():reshape(3,32,32),
+--             --   input  = x.input:double(),
+-- 			  target = x.target:long():add(1),
+-- 		       }
+--                     end,
+--                     dataset = tnt.ConcatDataset{
+--                         datasets = listdatasets
+--                     }
+--                 },
+--             }
+--         }
+--     }
+-- end
+
+---------------------- NETWORK ARCHITECTURE ----------------------
+
 -- TODO: defining correct backprop methodology based on
 -- slide 32 of FACE REC
 local network = require("./model/model.lua")
