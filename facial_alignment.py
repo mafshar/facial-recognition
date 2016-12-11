@@ -90,7 +90,8 @@ def detect_align_face(input_img_file, output_img_file):
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = img[y:y+h, x:x+w]
-        cv2.imwrite(output_img_file, roi_color)
+        face = cv2.resize(roi_color, (100, 100))
+        cv2.imwrite(output_img_file, face)
 
 if __name__ == '__main__':
     old_path = './data/gt_db'
