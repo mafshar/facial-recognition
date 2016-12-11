@@ -15,7 +15,9 @@ local dbg   = require 'debugger'
 
 ---------------------- PREPROCESSING ----------------------
 -- TODO: defining the data read and setting up iterators
-local base_data_path = "/Users/mohammadafshar1/Desktop/Fall 2016/Computer_Vision/Project/facial-recognition/"
+-- local base_data_path = "/Users/mohammadafshar1/Desktop/Fall 2016/Computer_Vision/Project/facial-recognition/"
+local base_data_path = "/Users/mattoor/Desktop/Dropbox/School/Senior/Fall\ 2016/Computer\ Vision/facial-recognition/"
+
 
 datasets = {torch.load(base_data_path .. 'cifar-10-torch/data_batch_1.t7', 'ascii'),
 		torch.load(base_data_path .. 'cifar-10-torch/data_batch_2.t7', 'ascii'),
