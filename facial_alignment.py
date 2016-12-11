@@ -3,13 +3,13 @@
 import cv2
 import os
 import sys
+import glob
 import numpy as np
 
-#TODO: Mo, make sure you comment out the second line and uncomment the first before you run. We have different versions of opencv3
-# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
-face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
 
-
+'''
 def align_image(im_color, im_gray):
     #get height and width
     sz = im_gray.shape
@@ -44,8 +44,6 @@ def align_image(im_color, im_gray):
     # cv2.imshow("Aligned Image", im_aligned)
     # cv2.waitKey(0)
     return im_aligned
-
-
 #helper function for findTransformECC (line 31)
 def get_gradient(im):
     # Calculate the x and y gradients using Sobel operator
@@ -55,7 +53,6 @@ def get_gradient(im):
     # Combine the two gradients
     grad = cv2.addWeighted(np.absolute(grad_x), 0.5, np.absolute(grad_y), 0.5, 0)
     return grad
-
 def alignment():
     # iterate through s01 - s50
     for setRange in range(2,51):
@@ -83,6 +80,41 @@ def alignment():
                 print 'Finished alignment'
                 img_save = './data/gt_db/' + set_index + '/' + image_index + '_aligned.jpg'
                 cv2.imwrite(img_save, aligned)
+'''
+
+def detect_align_face(input_img_file, output_img_file):
+    img = cv2.imread(input_img_file)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    for (x,y,w,h) in faces:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = img[y:y+h, x:x+w]
+        cv2.imwrite(output_img_file, roi_color)
 
 if __name__ == '__main__':
-    print 'lol'
+    old_path = './data/gt_db'
+    new_path_train = './data/training'
+    if not os.path.exists(new_path_train):
+        os.makedirs(new_path_train)
+    for path, dirs, files in os.walk(old_path):
+        # print path
+        class_num = path.strip().split('/')[-1][1:]
+        class_dir = os.path.join(new_path_train, class_num)
+        if not os.path.exists(class_dir):
+            os.makedirs(class_dir)
+        for f in files:
+            img_file_name = None
+            if f.endswith('.jpg'):
+                input_img_file_name = os.path.join(path, f)
+                output_img_file_name = os.path.join(class_dir, f)
+                detect_align_face(input_img_file_name, output_img_file_name)
+                    # cv2.imshow('img', roi_color)
+                    # cv2.waitKey(0)
+                    #okay kew we've localized the face, now we have to align it
+                    # print 'Aligning image: ' +  set_index + '/'+ image_index
+                    # aligned = align_image(roi_color, roi_gray)
+                    # print 'Finished alignment'
+                    # img_save = './data/gt_db/' + set_index + '/' + image_index + '_aligned.jpg'
+                    # cv2.imwrite(img_save, aligned)
+                # break

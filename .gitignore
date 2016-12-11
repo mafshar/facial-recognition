@@ -91,3 +91,5 @@ ENV/
 # Project Materials
 data/lfw2
 data/lfwa.tar.gz
+data/gt_db
+data/training
