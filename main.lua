@@ -50,7 +50,7 @@ datasets = {torch.load(base_data_path .. 'cifar-10-torch/data_batch_1.t7', 'asci
 -- FLATTENED VERSION OF ABOVE CODE
 
 local all_images = torch.Tensor(750, 30000)
-local all_labels = torch.Tensor(750)
+local all_labels = torch.Tensor(1, 750)
 
 local ndx = 1
 for folder = 1, 50 do
@@ -67,41 +67,48 @@ for folder = 1, 50 do
         img = image.load(base_data_path .. 'training/' .. folder_name .. '/' .. img_name )
 		-- image.display(img)
         all_images[ndx] = img:view(img:nElement())
-		all_labels[ndx] = folder
+		all_labels[{{}, ndx}] = folder
         ndx = ndx + 1
     end
 end
 
-
-
-local labels_shuffle = torch.randperm((#all_labels)[1])
+local labels_shuffle = torch.randperm(750)
 
 -- create train set:
 local train_data = {
-   data = torch.Tensor(750, 3, 100, 100),
-   labels = torch.Tensor(750),
+   -- data = torch.Tensor(750, 3, 100, 100),
+   data = torch.Tensor(750, 30000),
+   labels = torch.Tensor(1, 750),
    size = function() return 750 end
 }
 
 for i=1, 750 do
    train_data.data[i] = all_images[labels_shuffle[i]]:clone()
-   train_data.labels[i] = all_labels[labels_shuffle[i]]
+   train_data.labels[{{}, i}] = all_labels[{ {1}, {labels_shuffle[i]} }]
 end
 
 -- train_display.data   = train_mnist.data[{{1, 100}, {}, {}, {}}]
 -- train_display.labels = train_mnist.labels[{{1, 100}}]
 
 local datasets = {[1]={}, [2]={}, [3]={}}
-datasets[1].data = train_data.data[{{1, 250}, {}, {}, {}}]
-datasets[2].data = train_data.data[{{251, 500}, {}, {}, {}}]
-datasets[3].data = train_data.data[{{501, 750}, {}, {}, {}}]
+-- datasets[1].data = train_data.data[{{1, 250}, {}, {}, {}}]
+-- datasets[2].data = train_data.data[{{251, 500}, {}, {}, {}}]
+-- datasets[3].data = train_data.data[{{501, 750}, {}, {}, {}}]
+--
+-- datasets[1].labels = train_data.labels[{{1, 250}}]
+-- datasets[2].labels = train_data.labels[{{251, 500}}]
+-- datasets[3].labels = train_data.labels[{{501, 750}}]
 
-datasets[1].labels = train_data.labels[{{1, 250}}]
-datasets[2].labels = train_data.labels[{{251, 500}}]
-datasets[3].labels = train_data.labels[{{501, 750}}]
+datasets[1].data = torch.reshape(train_data.data[{{1, 250}}], 30000, 250):byte()
+datasets[2].data = torch.reshape(train_data.data[{{251, 500}}], 30000, 250):byte()
+datasets[3].data = torch.reshape(train_data.data[{{501, 750}}], 30000, 250):byte()
 
--- print(dataset)
--- os.exit()
+datasets[1].labels = train_data.labels[{ {1}, {1, 250} }]:byte()
+datasets[2].labels = train_data.labels[{ {1}, {251, 500} }]:byte()
+datasets[3].labels = train_data.labels[{ {1}, {501, 750} }]:byte()
+
+print(datasets)
+os.exit()
 
 -- datasets = {torch.load(base_data_path .. 'cifar-10-torch/data_batch_5.t7', 'ascii')}
 -- validiterator = getCifarIterator(datasets)
@@ -109,10 +116,11 @@ datasets[3].labels = train_data.labels[{{501, 750}}]
 -- testiterator  = getCifarIterator(datasets)
 
 
-
 local function getCifarIterator(datasets)
     local listdatasets = {}
     for _, dataset in pairs(datasets) do
+		-- print(_) --index
+		-- print(dataset) --actual data/labels
         local list = torch.range(1, dataset.data:size(1)):totable()
         table.insert(listdatasets,
                     tnt.ListDataset{
@@ -120,7 +128,7 @@ local function getCifarIterator(datasets)
                         load = function(idx)
                             return {
                                 input  = dataset.data[{{}, idx}],
-                                target = dataset.labels[{{}, idx}]
+                                target = dataset.labels[{idx}]
                             } -- sample contains input and target
                         end
                     })
@@ -170,6 +178,8 @@ for epoch = 1, epochs do
     local errors = 0
     local count = 0
     for d in trainiterator() do
+		print(d)
+		os.exit()
         network:forward(d.input)
         criterion:forward(network.output, d.target)
         network:zeroGradParameters()
