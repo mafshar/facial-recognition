@@ -67,7 +67,7 @@ for folder = 1, 50 do
         img = image.load(base_data_path .. 'training/' .. folder_name .. '/' .. img_name )
 		-- image.display(img)
         all_images[ndx] = img:view(img:nElement())
-		all_labels[{{}, ndx}] = folder
+		all_labels[{{}, ndx}] = folder - 1
         ndx = ndx + 1
     end
 end
@@ -107,8 +107,8 @@ datasets[1].labels = train_data.labels[{ {1}, {1, 250} }]:byte()
 datasets[2].labels = train_data.labels[{ {1}, {251, 500} }]:byte()
 datasets[3].labels = train_data.labels[{ {1}, {501, 750} }]:byte()
 
-print(datasets)
-os.exit()
+-- print(datasets)
+-- os.exit()
 
 -- datasets = {torch.load(base_data_path .. 'cifar-10-torch/data_batch_5.t7', 'ascii')}
 -- validiterator = getCifarIterator(datasets)
@@ -121,21 +121,23 @@ local function getCifarIterator(datasets)
     for _, dataset in pairs(datasets) do
 		-- print(_) --index
 		-- print(dataset) --actual data/labels
-        local list = torch.range(1, dataset.data:size(1)):totable()
+        local list = torch.range(1, 250):totable()
         table.insert(listdatasets,
                     tnt.ListDataset{
                         list = list,
                         load = function(idx)
+							-- print(idx)
+							-- print(dataset.data[{{}, 251}])
                             return {
                                 input  = dataset.data[{{}, idx}],
-                                target = dataset.labels[{idx}]
+                                target = dataset.labels[{{}, idx}]
                             } -- sample contains input and target
                         end
                     })
     end
     return tnt.DatasetIterator{
         dataset = tnt.BatchDataset{
-            batchsize = config.batchsize,
+            batchsize = 30,
             dataset = tnt.ShuffleDataset{
                dataset = tnt.TransformDataset{
                     transform = function(x)
@@ -156,7 +158,7 @@ end
 
 
 trainiterator = getCifarIterator(datasets)
--- for sample in trainiterator:run() do
+-- for sample in trainiterator() do
 -- 	print(sample)
 -- end
 
@@ -167,7 +169,7 @@ trainiterator = getCifarIterator(datasets)
 local network = require("./model/model.lua")
 local criterion = nn.CrossEntropyCriterion()
 local lr = 0.1
-local epochs = 1
+local epochs = 11
 
 print("Started training!")
 
@@ -178,9 +180,8 @@ for epoch = 1, epochs do
     local errors = 0
     local count = 0
     for d in trainiterator() do
-		print(d)
-		os.exit()
         network:forward(d.input)
+		-- print(d.target)
         criterion:forward(network.output, d.target)
         network:zeroGradParameters()
         criterion:backward(network.output, d.target)
@@ -225,8 +226,11 @@ for epoch = 1, epochs do
     --     out_image_weights = image.toDisplayTensor(weights)
     --     image.saveJPG('./network_weights.jpg', out_image_weights)
     -- end
-
 end
+
+-- torch.save('./cnn_model', network)model
+torch.save("./model/history/1/model1", network)
+
 --
 -- local testerrors = 0
 -- for d in testiterator() do

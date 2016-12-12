@@ -1,0 +1,43 @@
+----------------------------------
+12/12/16
+image size: 3x100x100
+epochs: 10
+LR: 0.1
+batch size: 30
+train-val split: 100-0
+PASTE TERMINAL OUTPUT HERE:
+
+----------------------------------
+
+----------------------------------
+12/12/16
+image size: 3x100x100
+epochs: 10
+LR: 0.3
+batch size: 50
+train-val split: 100-0
+PASTE TERMINAL OUTPUT HERE:
+
+----------------------------------
+
+----------------------------------
+12/12/16
+image size: 3x70x70
+epochs: 15
+LR: 0.1
+batch size: 30
+train-val split: 90-10
+PASTE TERMINAL OUTPUT HERE:
+
+----------------------------------
+
+----------------------------------
+12/12/16
+image size: 3x32x32
+epochs: 20
+LR: 0.2
+batch size: 40
+train-val split: 80-20
+PASTE TERMINAL OUTPUT HERE:
+
+----------------------------------
