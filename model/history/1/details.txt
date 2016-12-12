@@ -1,5 +1,6 @@
 ----------------------------------
 12/12/16
+Model 1 - Config 1
 image size: 3x100x100
 epochs: 30
 LR: 0.1
@@ -8,14 +9,46 @@ train-val split: 100-0
 dropout: 50%
 PASTE TERMINAL OUTPUT HERE:
 
+train | epoch = 1 | lr = 0.1000 | loss: 3.9206 | error: 744.0000 | s/iter: 102.9061
+train | epoch = 2 | lr = 0.1000 | loss: 3.9166 | error: 742.0000 | s/iter: 109.6582
+train | epoch = 3 | lr = 0.1000 | loss: 3.9154 | error: 738.0000 | s/iter: 121.4013
+train | epoch = 4 | lr = 0.1000 | loss: 3.9148 | error: 739.0000 | s/iter: 124.0922
+train | epoch = 5 | lr = 0.1000 | loss: 3.9145 | error: 737.0000 | s/iter: 124.2839
+train | epoch = 6 | lr = 0.1000 | loss: 3.9142 | error: 739.0000 | s/iter: 119.0198
+train | epoch = 7 | lr = 0.1000 | loss: 3.9139 | error: 741.0000 | s/iter: 124.2817
+train | epoch = 8 | lr = 0.1000 | loss: 3.9136 | error: 733.0000 | s/iter: 135.9535
+train | epoch = 9 | lr = 0.1000 | loss: 3.9129 | error: 740.0000 | s/iter: 128.9286
+train | epoch = 10 | lr = 0.1000 | loss: 3.9126 | error: 735.0000 | s/iter: 131.6022
+train | epoch = 11 | lr = 0.1000 | loss: 3.9118 | error: 736.0000 | s/iter: 124.8954
+train | epoch = 12 | lr = 0.1000 | loss: 3.9107 | error: 732.0000 | s/iter: 133.8795
+train | epoch = 13 | lr = 0.1000 | loss: 3.9095 | error: 737.0000 | s/iter: 125.8954
+train | epoch = 14 | lr = 0.1000 | loss: 3.9072 | error: 735.0000 | s/iter: 128.6859
+train | epoch = 15 | lr = 0.1000 | loss: 3.9039 | error: 738.0000 | s/iter: 125.5048
+train | epoch = 16 | lr = 0.1000 | loss: 3.8988 | error: 734.0000 | s/iter: 134.5415
+train | epoch = 17 | lr = 0.1000 | loss: 3.8923 | error: 732.0000 | s/iter: 131.4475
+train | epoch = 18 | lr = 0.1000 | loss: 3.8856 | error: 727.0000 | s/iter: 134.1576
+train | epoch = 19 | lr = 0.1000 | loss: 3.8762 | error: 723.0000 | s/iter: 103.4963
+train | epoch = 20 | lr = 0.1000 | loss: 3.8675 | error: 725.0000 | s/iter: 101.1457
+train | epoch = 21 | lr = 0.1000 | loss: 3.8556 | error: 718.0000 | s/iter: 100.4071
+train | epoch = 22 | lr = 0.1000 | loss: 3.8414 | error: 712.0000 | s/iter: 100.0120
+train | epoch = 23 | lr = 0.1000 | loss: 3.8194 | error: 708.0000 | s/iter: 98.8218
+train | epoch = 24 | lr = 0.1000 | loss: 3.7884 | error: 706.0000 | s/iter: 99.8908
+train | epoch = 25 | lr = 0.1000 | loss: 3.7397 | error: 700.0000 | s/iter: 100.3484
+train | epoch = 26 | lr = 0.1000 | loss: 3.6937 | error: 705.0000 | s/iter: 98.7759
+train | epoch = 27 | lr = 0.1000 | loss: 3.6838 | error: 690.0000 | s/iter: 97.3347
+train | epoch = 28 | lr = 0.1000 | loss: 3.6166 | error: 684.0000 | s/iter: 98.9301
+train | epoch = 29 | lr = 0.1000 | loss: 3.5541 | error: 677.0000 | s/iter: 96.8818
+train | epoch = 30 | lr = 0.1000 | loss: 3.4971 | error: 668.0000 | s/iter: 98.2961
+
 ----------------------------------
 
 ----------------------------------
 12/12/16
+Model 1 - Config 2
 image size: 3x100x100
 epochs: 50
 LR: 0.3
-batch size: 50
+batch size: 30
 train-val split: 100-0
 dropout: 20%
 PASTE TERMINAL OUTPUT HERE:
