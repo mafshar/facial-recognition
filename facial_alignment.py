@@ -6,8 +6,9 @@ import sys
 import glob
 import numpy as np
 
-face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
-# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+RESIZE_FLAG = True
 
 '''
 def align_image(im_color, im_gray):
@@ -94,28 +95,40 @@ def detect_align_face(input_img_file, output_img_file):
         cv2.imwrite(output_img_file, face)
 
 if __name__ == '__main__':
-    old_path = './data/gt_db'
-    new_path_train = './data/training'
-    if not os.path.exists(new_path_train):
-        os.makedirs(new_path_train)
-    for path, dirs, files in os.walk(old_path):
-        # print path
-        class_num = path.strip().split('/')[-1][1:]
-        class_dir = os.path.join(new_path_train, class_num)
-        if not os.path.exists(class_dir):
-            os.makedirs(class_dir)
-        for f in files:
-            img_file_name = None
-            if f.endswith('.jpg'):
-                input_img_file_name = os.path.join(path, f)
-                output_img_file_name = os.path.join(class_dir, f)
-                detect_align_face(input_img_file_name, output_img_file_name)
-                    # cv2.imshow('img', roi_color)
-                    # cv2.waitKey(0)
-                    #okay kew we've localized the face, now we have to align it
-                    # print 'Aligning image: ' +  set_index + '/'+ image_index
-                    # aligned = align_image(roi_color, roi_gray)
-                    # print 'Finished alignment'
-                    # img_save = './data/gt_db/' + set_index + '/' + image_index + '_aligned.jpg'
-                    # cv2.imwrite(img_save, aligned)
-                # break
+    if RESIZE_FLAG:
+        train_path = './data/training'
+        for path, dirs, files in os.walk(train_path):
+            for f in files:
+                img_file_name = None
+                if f.endswith('.jpg'):
+                    img_file_name = os.path.join(path, f)
+                    img = cv2.imread(img_file_name)
+                    new_img = cv2.resize(img, (100, 100))
+                    cv2.imwrite(img_file_name, new_img)
+
+    else:
+        old_path = './data/gt_db'
+        new_path_train = './data/training'
+        if not os.path.exists(new_path_train):
+            os.makedirs(new_path_train)
+        for path, dirs, files in os.walk(old_path):
+            # print path
+            class_num = path.strip().split('/')[-1][1:]
+            class_dir = os.path.join(new_path_train, class_num)
+            if not os.path.exists(class_dir):
+                os.makedirs(class_dir)
+            for f in files:
+                input_img_file_name = None
+                if f.endswith('.jpg'):
+                    input_img_file_name = os.path.join(path, f)
+                    output_img_file_name = os.path.join(class_dir, f)
+                    detect_align_face(input_img_file_name, output_img_file_name)
+                        # cv2.imshow('img', roi_color)
+                        # cv2.waitKey(0)
+                        #okay kew we've localized the face, now we have to align it
+                        # print 'Aligning image: ' +  set_index + '/'+ image_index
+                        # aligned = align_image(roi_color, roi_gray)
+                        # print 'Finished alignment'
+                        # img_save = './data/gt_db/' + set_index + '/' + image_index + '_aligned.jpg'
+                        # cv2.imwrite(img_save, aligned)
+                    # break
