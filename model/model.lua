@@ -7,6 +7,7 @@ local ReLU = nn.ReLU
 local Max = nn.SpatialMaxPooling
 local View = nn.View
 local Linear = nn.Linear
+local Dropout = nn.Dropout
 
 local model  = nn.Sequential()
 
@@ -15,14 +16,17 @@ local model  = nn.Sequential()
 model:add(Convolution(3, 100, 7, 7))
 model:add(ReLU())
 model:add(Max(2,2,2,2))
+model:add(Dropout())
 
 model:add(Convolution(100, 150, 4, 4))
 model:add(ReLU())
 model:add(Max(2,2,2,2))
+model:add(Dropout())
 
 model:add(Convolution(150, 250, 4, 4))
 model:add(ReLU())
 model:add(Max(2,2,2,2))
+model:add(Dropout())
 
 -- print(#model:forward(x))
 -- os.exit()

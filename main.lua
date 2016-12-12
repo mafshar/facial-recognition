@@ -6,7 +6,7 @@ require 'trepl'
 
 local cmd = torch.CmdLine()
 cmd:option('-lr', 0.1, 'learning rate')
-cmd:option('-batchsize', 100, 'batchsize')
+cmd:option('-batchsize', 30, 'batchsize')
 cmd:option('-epochs', 10 , 'epochs')
 local config = cmd:parse(arg)
 
@@ -118,8 +118,8 @@ trainiterator = getCifarIterator(datasets)
 
 local network = require("./model/model.lua")
 local criterion = nn.CrossEntropyCriterion()
-local lr = 0.1
-local epochs = 11
+local lr = config.lr
+local epochs = config.epochs
 
 print("Started training!")
 
