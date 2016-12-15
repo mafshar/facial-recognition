@@ -3,6 +3,7 @@
 import os
 import sys
 import urllib
+import httplib
 import cv2
 import numpy as np
 
@@ -15,11 +16,33 @@ def read_file(filename):
     content.pop(0)
     return [s.strip().split() for s in content]
 
-def download_transform_image(url, img_file_name):
-    print img_file_name
-    urllib.urlretrieve(url, img_file_name)
+def download_transform_image(url, img_file_name, coords):
+    coords = [int(v) for v in coords.strip().split(',')]
+    x1, y1, x2, y2 = coords[0], coords[1], coords[2], coords[3]
+    download_command = 'wget -t 1 -O ' + img_file_name + ' ' + url
+    delete_command = 'rm ' + img_file_name
+    os.system(download_command)
+    img = cv2.imread(img_file_name)
+    if img is not None:
+        crop_img = img[y1:y2, x1:x2]
+        crop_img = cv2.resize(crop_img, (70, 70))
+        cv2.imshow('img', crop_img)
+        cv2.imwrite(img_file_name, crop_img)
+    else:
+        os.system(delete_command)
 
-    return
+def get_attributes(sample):
+    if len(sample) == 7:
+        curr_name = sample[0] + ' ' + sample[1]
+        face_id = sample[3]
+        url = sample[4]
+        coords = sample[5]
+    elif len(sample) == 8:
+        curr_name = sample[0] + ' ' + sample[1] + ' ' + sample[2]
+        face_id = sample[4]
+        url = sample[5]
+        coords = sample[6]
+    return curr_name, face_id, url, coords
 
 def generate_data(raw, starting_label=0):
     train_path = './data/training'
@@ -30,16 +53,14 @@ def generate_data(raw, starting_label=0):
     class_path = os.path.join(train_path, str(label))
     if not os.path.exists(class_path):
         os.makedirs(class_path)
-    img_num = 0
     for sample in raw:
-        curr_name = sample[0] + ' ' + sample[1]
-        url = sample[4]
-        coords = sample[5]
-        if curr_name == prev_name:
-            img_num += 1
-            img_file_name = os.path.join(class_path, str(img_num) + '.jpg')
-            download_transform_image(url, img_file_name)
-            ## we're on the same class
-        else:
-            pass
+        curr_name, face_id, url, coords = get_attributes(sample)
+        if curr_name != prev_name:
+            label += 1
+            class_path = os.path.join(train_path, str(label))
+            if not os.path.exists(class_path):
+                os.makedirs(class_path)
+        img_file_name = os.path.join(class_path, url.strip().split('/')[-1])
+        download_transform_image(url, img_file_name, coords)
+        prev_name = curr_name
             ## we're on a different class now
