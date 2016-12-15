@@ -53,6 +53,57 @@ train-val split: 100-0
 dropout: 20%
 PASTE TERMINAL OUTPUT HERE:
 
+train | epoch = 1 | lr = 0.3000 | loss: 3.9206 | error: 741.0000 | s/iter: 133.9837
+train | epoch = 2 | lr = 0.3000 | loss: 3.9184 | error: 743.0000 | s/iter: 97.2967
+train | epoch = 3 | lr = 0.3000 | loss: 3.9181 | error: 741.0000 | s/iter: 101.3161
+train | epoch = 4 | lr = 0.3000 | loss: 3.9179 | error: 742.0000 | s/iter: 128.5988
+train | epoch = 5 | lr = 0.3000 | loss: 3.9176 | error: 743.0000 | s/iter: 151.2079
+train | epoch = 6 | lr = 0.3000 | loss: 3.9173 | error: 741.0000 | s/iter: 151.4933
+train | epoch = 7 | lr = 0.3000 | loss: 3.9165 | error: 743.0000 | s/iter: 143.6605
+train | epoch = 8 | lr = 0.3000 | loss: 3.9149 | error: 742.0000 | s/iter: 178.2394
+train | epoch = 9 | lr = 0.3000 | loss: 3.9110 | error: 741.0000 | s/iter: 135.6882
+train | epoch = 10 | lr = 0.3000 | loss: 3.9020 | error: 737.0000 | s/iter: 142.0339
+train | epoch = 11 | lr = 0.3000 | loss: 3.8895 | error: 736.0000 | s/iter: 182.2924
+train | epoch = 12 | lr = 0.3000 | loss: 3.8722 | error: 727.0000 | s/iter: 170.5512
+train | epoch = 13 | lr = 0.3000 | loss: 3.8854 | error: 735.0000 | s/iter: 183.4981
+train | epoch = 14 | lr = 0.3000 | loss: 3.8559 | error: 719.0000 | s/iter: 135.9701
+train | epoch = 15 | lr = 0.3000 | loss: 3.8583 | error: 722.0000 | s/iter: 120.2707
+train | epoch = 16 | lr = 0.3000 | loss: 3.9105 | error: 730.0000 | s/iter: 119.7759
+train | epoch = 17 | lr = 0.3000 | loss: 3.9191 | error: 743.0000 | s/iter: 117.9562
+train | epoch = 18 | lr = 0.3000 | loss: 3.9185 | error: 743.0000 | s/iter: 135.1911
+train | epoch = 19 | lr = 0.3000 | loss: 3.9175 | error: 744.0000 | s/iter: 154.4996
+train | epoch = 20 | lr = 0.3000 | loss: 3.9091 | error: 742.0000 | s/iter: 122.1746
+train | epoch = 21 | lr = 0.3000 | loss: 3.8565 | error: 730.0000 | s/iter: 142.5097
+train | epoch = 22 | lr = 0.3000 | loss: 3.8533 | error: 725.0000 | s/iter: 168.7469
+train | epoch = 23 | lr = 0.3000 | loss: 3.9156 | error: 741.0000 | s/iter: 182.3922
+train | epoch = 24 | lr = 0.3000 | loss: 3.8975 | error: 735.0000 | s/iter: 166.0442
+train | epoch = 25 | lr = 0.3000 | loss: 3.7676 | error: 713.0000 | s/iter: 130.9462
+train | epoch = 26 | lr = 0.3000 | loss: 3.6662 | error: 695.0000 | s/iter: 160.8330
+train | epoch = 27 | lr = 0.3000 | loss: 3.6946 | error: 696.0000 | s/iter: 143.8870
+train | epoch = 28 | lr = 0.3000 | loss: 3.5488 | error: 684.0000 | s/iter: 163.0398
+train | epoch = 29 | lr = 0.3000 | loss: 3.4471 | error: 675.0000 | s/iter: 102.9544
+train | epoch = 30 | lr = 0.3000 | loss: 3.3283 | error: 653.0000 | s/iter: 115.7568
+train | epoch = 31 | lr = 0.3000 | loss: 3.2734 | error: 638.0000 | s/iter: 119.1458
+train | epoch = 32 | lr = 0.3000 | loss: 3.2036 | error: 624.0000 | s/iter: 122.2799
+train | epoch = 33 | lr = 0.3000 | loss: 3.2491 | error: 627.0000 | s/iter: 120.7980
+train | epoch = 34 | lr = 0.3000 | loss: 3.1481 | error: 616.0000 | s/iter: 123.0888
+train | epoch = 35 | lr = 0.3000 | loss: 3.0802 | error: 595.0000 | s/iter: 121.4620
+train | epoch = 36 | lr = 0.3000 | loss: 3.0645 | error: 595.0000 | s/iter: 121.7480
+train | epoch = 37 | lr = 0.3000 | loss: 2.9345 | error: 581.0000 | s/iter: 120.5220
+train | epoch = 38 | lr = 0.3000 | loss: 2.8699 | error: 569.0000 | s/iter: 118.9398
+train | epoch = 39 | lr = 0.3000 | loss: 2.8140 | error: 565.0000 | s/iter: 120.7307
+train | epoch = 40 | lr = 0.3000 | loss: 2.7547 | error: 554.0000 | s/iter: 121.6562
+train | epoch = 41 | lr = 0.3000 | loss: 2.8248 | error: 564.0000 | s/iter: 120.4177
+train | epoch = 42 | lr = 0.3000 | loss: 2.8458 | error: 567.0000 | s/iter: 118.4500
+train | epoch = 43 | lr = 0.3000 | loss: 2.7146 | error: 541.0000 | s/iter: 118.7251
+train | epoch = 44 | lr = 0.3000 | loss: 2.6978 | error: 534.0000 | s/iter: 119.9855
+train | epoch = 45 | lr = 0.3000 | loss: 2.8607 | error: 549.0000 | s/iter: 117.9562
+train | epoch = 46 | lr = 0.3000 | loss: 2.7415 | error: 546.0000 | s/iter: 118.3150
+train | epoch = 47 | lr = 0.3000 | loss: 2.7275 | error: 554.0000 | s/iter: 118.0917
+train | epoch = 48 | lr = 0.3000 | loss: 2.7121 | error: 542.0000 | s/iter: 120.0766
+train | epoch = 49 | lr = 0.3000 | loss: 2.6959 | error: 538.0000 | s/iter: 117.5540
+train | epoch = 50 | lr = 0.3000 | loss: 2.5989 | error: 520.0000 | s/iter: 118.2743
+
 ----------------------------------
 
 ----------------------------------

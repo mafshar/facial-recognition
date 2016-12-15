@@ -94,3 +94,4 @@ data/lfwa.tar.gz
 data/gt_db
 data/training
 model/history/1/config1
+model/history/1/config2

@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 '''
-Script to generate a random subsample of images
+Module to generate a random subsample of images
 for training -- should only be used to *replace*
 existing './data/randPairsDevTrain.txt' file
 '''
+
 import os
-import sys
 import numpy as np
 
 FILENAME = './data/pairsDevTrain.txt'
 
-if __name__ == '__main__':
+def split_train(filename):
     with open(FILENAME) as f:
         content = f.readlines()
     content = [s for s in content]

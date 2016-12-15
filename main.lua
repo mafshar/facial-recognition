@@ -146,4 +146,4 @@ for epoch = 1, epochs do
     epoch, lr, loss, errors, timer:time().real
     ))
 end
-torch.save("./model/history/1/config2", network)
+torch.save("./model/history/1/config2_more_epochs", network)
