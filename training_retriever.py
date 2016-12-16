@@ -64,3 +64,41 @@ def generate_data(raw, starting_label=0):
         download_transform_image(url, img_file_name, coords)
         prev_name = curr_name
             ## we're on a different class now
+def rename_training_directories():
+    train_path = os.path.abspath('./data/more_data')
+    count = 1
+    for folder in os.listdir(train_path):
+        if not os.path.isdir(os.path.join(train_path, folder)):
+            continue # Not a directory
+        if count < 10:
+            new_name = "0"+ str(count)
+            os.rename(os.path.join(train_path, folder), os.path.join(train_path, new_name))
+        else:
+            new_name = str(count)
+            os.rename(os.path.join(train_path, folder), os.path.join(train_path, new_name))
+        count+=1
+def rename_training_files():
+    train_path = os.path.abspath('./data/more_data')
+    for folder in os.listdir(train_path):
+        for (dirpath, dirnames, filenames) in os.walk(os.path.join(train_path,folder)):
+            abs_folder = os.path.abspath(os.path.join(train_path,folder))
+            count = 1
+            for file_name in filenames:
+                actual_name, extension = os.path.splitext(file_name)
+                if count < 10:
+                    new_name = "0" + str(count)
+                    old_file_name = os.path.join(abs_folder,file_name)
+                    new_part = new_name + extension
+                    new_file_name = os.path.join(abs_folder, new_part)
+                    new_file_name = os.path.abspath(new_file_name)
+                    print new_file_name
+                    os.rename(old_file_name, new_file_name)
+                else:
+                    new_name = str(count)
+                    old_file_name = os.path.join(abs_folder,file_name)
+                    new_part = new_name + extension
+                    new_file_name = os.path.join(abs_folder, new_part)
+                    new_file_name = os.path.abspath(new_file_name)
+                    print new_file_name
+                    os.rename(old_file_name, new_file_name)
+                count += 1
