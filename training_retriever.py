@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 
 ACTOR_FILENAME = './data/faceScrub/facescrub_actors.txt'
-ACTRESS_FILENAME = './data/faceScrub/facescrub_actoresses.txt'
+ACTRESS_FILENAME = './data/faceScrub/facescrub_actresses.txt'
 
 def read_file(filename):
     with open(filename) as f:
@@ -25,9 +25,11 @@ def download_transform_image(url, img_file_name, coords):
     img = cv2.imread(img_file_name)
     if img is not None:
         crop_img = img[y1:y2, x1:x2]
-        crop_img = cv2.resize(crop_img, (70, 70))
-        cv2.imshow('img', crop_img)
-        cv2.imwrite(img_file_name, crop_img)
+        try:
+            crop_img = cv2.resize(crop_img, (70, 70))
+            cv2.imwrite(img_file_name, crop_img)
+        except cv2.error:
+            os.system(delete_command)
     else:
         os.system(delete_command)
 
@@ -45,7 +47,7 @@ def get_attributes(sample):
     return curr_name, face_id, url, coords
 
 def generate_data(raw, starting_label=0):
-    train_path = './data/training'
+    train_path = './data/training-actress'
     if not os.path.exists(train_path):
         os.makedirs(train_path)
     label = starting_label

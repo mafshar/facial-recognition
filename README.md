@@ -1,6 +1,12 @@
 # facial recognition
 Based on the Facebook DNN, DeepFace
 
+NOTE:
+
+Male class ends at 212 with Neal McDonough as the last true label. Nick Frost (not trained on) is label 213.
+
+Female class ends at 108 with Shannen Doherty as the last true label. Portia Doubleday (not trained on) is label 109.
+
 To run:
 
 make sure you have virtual env and virtual env wrapper; if not, type:
