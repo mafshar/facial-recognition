@@ -7,6 +7,7 @@ import training_retriever
 
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     actor_data = training_retriever.read_file(training_retriever.ACTOR_FILENAME)
     actress_data = training_retriever.read_file(training_retriever.ACTRESS_FILENAME)
     i = 0
@@ -19,6 +20,10 @@ if __name__ == '__main__':
     actress_data.pop(0)
     # print actress_data[0]
     training_retriever.generate_data(actress_data, 72)
+    # actor_data = training_retriever.read_file(training_retriever.ACTOR_FILENAME)
+    # training_retriever.generate_data(actor_data)
+    training_retriever.rename_training_directories()
+    training_retriever.rename_training_files()
 
 
     # if facial_alignment.RESIZE_FLAG:
