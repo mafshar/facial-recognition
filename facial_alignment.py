@@ -6,8 +6,8 @@ import sys
 import glob
 import numpy as np
 
-# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
-face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_3/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
+# face_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv3/3.1.0_4/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml')
 RESIZE_FLAG = True
 
 '''
@@ -87,9 +87,12 @@ def detect_align_face(input_img_file, output_img_file):
     img = cv2.imread(input_img_file)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    # if faces:
     for (x,y,w,h) in faces:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = img[y:y+h, x:x+w]
-        face = cv2.resize(roi_color, (100, 100))
+        face = cv2.resize(roi_color, (70, 70))
         cv2.imwrite(output_img_file, face)
+    # else:
+    #     print input_img_file
