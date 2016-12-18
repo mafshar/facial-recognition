@@ -66,22 +66,24 @@ def generate_data(raw, starting_label=0):
         download_transform_image(url, img_file_name, coords)
         prev_name = curr_name
             ## we're on a different class now
-            
+
 def rename_training_directories():
     train_path = os.path.abspath('./data/more_data')
     count = 1
     for folder in os.listdir(train_path):
+        print folder
         if not os.path.isdir(os.path.join(train_path, folder)):
             continue # Not a directory
         if count < 10:
             new_name = "0"+ str(count)
-            os.rename(os.path.join(train_path, folder), os.path.join(train_path, new_name))
+            os.renames(os.path.join(train_path, folder), os.path.join(train_path, new_name))
         else:
             new_name = str(count)
-            os.rename(os.path.join(train_path, folder), os.path.join(train_path, new_name))
+            os.renames(os.path.join(train_path, folder), os.path.join(train_path, new_name))
         count+=1
+
 def rename_training_files():
-    train_path = os.path.abspath('./data/more_data')
+    train_path = os.path.abspath('./data/training-actress')
     for folder in os.listdir(train_path):
         for (dirpath, dirnames, filenames) in os.walk(os.path.join(train_path,folder)):
             abs_folder = os.path.abspath(os.path.join(train_path,folder))
@@ -95,7 +97,7 @@ def rename_training_files():
                     new_file_name = os.path.join(abs_folder, new_part)
                     new_file_name = os.path.abspath(new_file_name)
                     print new_file_name
-                    os.rename(old_file_name, new_file_name)
+                    os.renames(old_file_name, new_file_name)
                 else:
                     new_name = str(count)
                     old_file_name = os.path.join(abs_folder,file_name)
@@ -103,5 +105,5 @@ def rename_training_files():
                     new_file_name = os.path.join(abs_folder, new_part)
                     new_file_name = os.path.abspath(new_file_name)
                     print new_file_name
-                    os.rename(old_file_name, new_file_name)
+                    os.renames(old_file_name, new_file_name)
                 count += 1

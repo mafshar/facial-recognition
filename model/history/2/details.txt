@@ -1,6 +1,6 @@
 ----------------------------------
 12/17/16
-Model 1 - Config 1
+Model 2 - Config 1
 image size: 3x70x70
 epochs: 10
 LR: 0.1
@@ -13,7 +13,7 @@ PASTE TERMINAL OUTPUT HERE:
 
 ----------------------------------
 12/17/16
-Model 1 - Config 2
+Model 2 - Config 2
 image size: 3x70x70
 epochs: 10
 LR: 0.3
