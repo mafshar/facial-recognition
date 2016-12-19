@@ -9,11 +9,70 @@ train-val split: 100-0
 dropout: 20%
 PASTE TERMINAL OUTPUT HERE:
 
+train | epoch = 1 | lr = 0.1000 | loss: 5.5706 | error: 41383.0000 | s/iter: 1045.0409
+train | epoch = 2 | lr = 0.1000 | loss: 5.5097 | error: 41354.0000 | s/iter: 967.4019
+train | epoch = 3 | lr = 0.1000 | loss: 5.5015 | error: 41351.0000 | s/iter: 967.8999
+train | epoch = 4 | lr = 0.1000 | loss: 5.4971 | error: 41361.0000 | s/iter: 963.4768
+train | epoch = 5 | lr = 0.1000 | loss: 5.4943 | error: 41357.0000 | s/iter: 966.9772
+train | epoch = 6 | lr = 0.1000 | loss: 5.4921 | error: 41355.0000 | s/iter: 962.2445
+train | epoch = 7 | lr = 0.1000 | loss: 5.4903 | error: 41355.0000 | s/iter: 962.6845
+train | epoch = 8 | lr = 0.1000 | loss: 5.4887 | error: 41352.0000 | s/iter: 964.4182
+train | epoch = 9 | lr = 0.1000 | loss: 5.4873 | error: 41349.0000 | s/iter: 964.8988
+train | epoch = 10 | lr = 0.1000 | loss: 5.4859 | error: 41351.0000 | s/iter: 968.1065
+
 ----------------------------------
 
 ----------------------------------
 12/17/16
 Model 2 - Config 2
+image size: 3x70x70
+epochs: 20
+LR: 0.2
+batch size: 128
+train-val split: 100-0
+dropout: 20%
+PASTE TERMINAL OUTPUT HERE:
+
+train | epoch = 1 | lr = 0.2000 | loss: 5.5515 | error: 41374.0000 | s/iter: 1267.7791
+train | epoch = 2 | lr = 0.2000 | loss: 5.5072 | error: 41358.0000 | s/iter: 1460.1405
+train | epoch = 3 | lr = 0.2000 | loss: 5.5002 | error: 41349.0000 | s/iter: 1944.4306
+train | epoch = 4 | lr = 0.2000 | loss: 5.4965 | error: 41350.0000 | s/iter: 1448.9046
+train | epoch = 5 | lr = 0.2000 | loss: 5.4938 | error: 41352.0000 | s/iter: 1601.1326
+train | epoch = 6 | lr = 0.2000 | loss: 5.4914 | error: 41353.0000 | s/iter: 1415.9426
+train | epoch = 7 | lr = 0.2000 | loss: 5.4877 | error: 41341.0000 | s/iter: 1708.1718
+train | epoch = 8 | lr = 0.2000 | loss: 5.4787 | error: 41292.0000 | s/iter: 1661.2122
+train | epoch = 9 | lr = 0.2000 | loss: 5.4552 | error: 41227.0000 | s/iter: 1328.4821
+train | epoch = 10 | lr = 0.2000 | loss: 5.3989 | error: 41080.0000 | s/iter: 2278.6344
+train | epoch = 11 | lr = 0.2000 | loss: 5.2695 | error: 40776.0000 | s/iter: 1799.8357
+train | epoch = 12 | lr = 0.2000 | loss: 4.9661 | error: 39913.0000 | s/iter: 1190.1633
+train | epoch = 13 | lr = 0.2000 | loss: 5.3897 | error: 40529.0000 | s/iter: 1198.2122
+train | epoch = 14 | lr = 0.2000 | loss: 5.5143 | error: 41347.0000 | s/iter: 1158.2582
+train | epoch = 15 | lr = 0.2000 | loss: 5.5550 | error: 41378.0000 | s/iter: 1094.6388
+train | epoch = 16 | lr = 0.2000 | loss: 5.5346 | error: 41383.0000 | s/iter: 1042.0475
+train | epoch = 17 | lr = 0.2000 | loss: 5.5299 | error: 41388.0000 | s/iter: 1019.9312
+train | epoch = 18 | lr = 0.2000 | loss: 5.5254 | error: 41390.0000 | s/iter: 1011.7862
+train | epoch = 19 | lr = 0.2000 | loss: 5.5230 | error: 41387.0000 | s/iter: 2245.8800
+train | epoch = 20 | lr = 0.2000 | loss: 5.5220 | error: 41387.0000 | s/iter: 2065.8506
+
+----------------------------------
+
+----------------------------------
+12/17/16
+Model 2 - Config 3
+image size: 3x70x70
+epochs: 12
+LR: 0.8
+batch size: 128
+train-val split: 100-0
+dropout: 0%
+Alternative: Tanh-Tanh-ReLU; second to last linear layer has 4096 neurons
+PASTE TERMINAL OUTPUT HERE:
+
+----------------------------------
+
+----------------------------------
+12/17/16
+Model 2 - Config 4
 image size: 3x70x70
 epochs: 10
 LR: 0.3
