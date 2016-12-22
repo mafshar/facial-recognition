@@ -30,7 +30,7 @@
 Our objective in this project was to achieve a relatively low error in face recognition by exploring and training variations of existing successful architectures. Our models were influenced specifically by Facebook and Google's \textit{DeepFace} and \textit{FaceNet} architectures, respectively, as well as the winning architecture from a 2011 Recognition Benchmark. We used a subset of Stefan Winkler's FaceScrub dataset to give us 41.6 thousand training images across 321 classes and tested our models using a subset of Labeled Faces in the Wild (LFW). Despite resource and time constraints, we created, trained, and tested three different architectures in order to compare and analyze the resulting rates in face recognition.
 \section{Problem Summary}
     \par
-    The problem we aimed to solve using our models was facial recognition with 'same-not-same' classification. Thus, we trained a convolutional neural network on our dataset, and used Cosine similarity during testing to determine if two images passed through our trained network were of the same face. The size of the test set is 1000 face pairs.
+    The problem we aimed to solve using our models was facial recognition with 'same-not-same' classification. Thus, we trained a convolutional neural network on our dataset, and used Cosine similarity during testing to determine if two images passed through our trained network were images of the same face. The size of the test set is 1000 face pairs.
 \section{Baseline Method}
 \par
 There are several experiments that have previously been done in facial recognition. Our benchmark for comparison was a deep learning model consisting of an ensemble method of over twenty neural nets. The training data used by this model is a subset of the LFW dataset using a generative approach initially to generate more training samples. The misclassification error this experiment achieved was 91.75\%. 
@@ -77,7 +77,7 @@ Hello there
 
 \section{Conclusion}
     \par
-    
+    For our project we utilized multiple existing and successful models to explore different results in facial recognition and 'same-not-same' classification. Specifically, we attempted to mimic the architectures and results of \textit{DeepFace}, \textit{FaceNet}, and the Recognition Benchmark. Due to data, computing, and time restrictions, however, we knew our end results would be subpar overall. As these models are data-driven, we would need to upgrade our dataset significantly (on the order of hundreds) in addition to higher computing power and more time, in order to achieve relatively similar results to those of the models that we simulated. 
 \section{Future Works} Will do later
 \section{References}
 
