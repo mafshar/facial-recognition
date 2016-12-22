@@ -162,6 +162,6 @@ for epoch = 1, epochs do
     'train | epoch = %d | lr = %1.4f | loss: %2.4f | error: %2.4f | s/iter: %2.4f',
     epoch, lr, loss, errors, timer:time().real
     ))
-	torch.save("./model/history/2/config3.t7", network)
+	torch.save("./model/history/3/config1.t7", network)
 end
-torch.save("./model/history/2/config3_final.t7", network)
+torch.save("./model/history/3/config1_final.t7", network)

@@ -89,15 +89,8 @@ ENV/
 .ropeproject
 
 # Project Materials
-data/lfw2
-data/lfwa.tar.gz
-data/cifar-10-torch
-data/faceScrub
-data/data.zip
-data/training.zip
-data/training-actor
-data/training-actress
-data/gt_db
+data/*
+model/history/*
 model/history/1/config1
 model/history/1/config2
 model/history/1/config2_more_epochs

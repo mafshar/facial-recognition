@@ -11,28 +11,19 @@ local Dropout = nn.Dropout
 
 local model  = nn.Sequential()
 
-local x = torch.Tensor(3, 70, 70)
-
 model:add(Convolution(3, 16, 4, 4))
--- model:add(ReLU())
-model:add(Tanh())
-model:add(Max(2,2,2,2))
-
+model:add(ReLU())
 model:add(Convolution(16, 32, 4, 4))
--- model:add(ReLU())
-model:add(Tanh())
--- model:add(Max(3,3,2,2))
-
-model:add(Convolution(32, 128, 7, 7))
 model:add(ReLU())
 model:add(Max(2,2,2,2))
--- model:add(Dropout(0.2))
 
--- print(#model:forward(x))
--- os.exit()
+model:add(Convolution(32, 64, 4, 4))
+model:add(ReLU())
+model:add(Convolution(64, 128, 4, 4))
+model:add(ReLU())
+model:add(Max(2,2,2,2))
 
-
-model:add(nn.Reshape(18432))
-model:add(Linear(18432, 4096))
+model:add(nn.Reshape(21632))
+model:add(Linear(21632, 4096))
 model:add(Linear(4096, 321))
 return model
