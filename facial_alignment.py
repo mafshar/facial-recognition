@@ -40,7 +40,7 @@ def align_image(im_color, im_gray):
             im_aligned[:,:,i] = cv2.warpAffine(im_color[:,:,i], warp_matrix, (width, height), flags=cv2.INTER_LINEAR + cv2.WARP_INVERSE_MAP);
         # print warp_matrix
 
-    # Show final output
+    # Show final output -- suh dude
     # cv2.imshow("Color Image", im_color)
     # cv2.imshow("Aligned Image", im_aligned)
     # cv2.waitKey(0)
